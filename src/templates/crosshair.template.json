@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "name": "CS2 CROSSHAIR",
+    "notes": [
+      "Import this via: exec crosshair.cfg (manually in console or in your own chain)"
+    ]
+  },
+  "lines": [
+    "cl_crosshairstyle 5",
+    "cl_crosshairsize 1",
+    "cl_crosshairthickness 0.5",
+    "cl_crosshairgap -5",
+    "cl_crosshair_drawoutline 0",
+    "cl_crosshair_outlinethickness 0",
+    "cl_crosshairdot 1",
+    "cl_crosshair_t 0",
+    "cl_crosshairusealpha 1",
+    "cl_crosshairalpha 255",
+    "cl_crosshair_recoil 0",
+    "cl_crosshairgap_useweaponvalue 0",
+    "cl_crosshaircolor 5",
+    "",
+    "// apply_crosshair_code CSGO-eMEzp-hfW4f-3b9tt-6iRs3-sLNMB",
+    "",
+    "echo \"Crosshair geladen!\""
+  ]
+}

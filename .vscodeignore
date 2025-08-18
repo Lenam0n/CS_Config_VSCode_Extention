@@ -1,0 +1,10 @@
+.github/**
+__tests__/**
+coverage/**
+jest.config.ts
+jest.config.js
+jest.setup.ts
+jest.setup.js
+scripts/**
+*.spec.ts
+*.test.ts

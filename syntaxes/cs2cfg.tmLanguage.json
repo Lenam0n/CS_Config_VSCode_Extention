@@ -1,0 +1,70 @@
+{
+  "scopeName": "source.cs2cfg",
+  "name": "CS CFG",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#bind" },
+    { "include": "#alias" },
+    { "include": "#setvar" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.cs2cfg",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.line.hash.cs2cfg",
+          "match": "#.*$"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.cs2cfg",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            { "name": "constant.character.escape.cs2cfg", "match": "\\\\." }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.cs2cfg",
+          "match": "(?<![\\w.])[-+]?(?:\\d*\\.\\d+|\\d+)(?:[eE][-+]?\\d+)?(?![\\w.])"
+        }
+      ]
+    },
+    "bind": {
+      "patterns": [
+        {
+          "name": "support.function.bind.cs2cfg",
+          "match": "^(\\s*)(bind|unbind|unbindall)\\b"
+        }
+      ]
+    },
+    "alias": {
+      "patterns": [
+        {
+          "name": "support.function.alias.cs2cfg",
+          "match": "^(\\s*)alias\\b"
+        }
+      ]
+    },
+    "setvar": {
+      "patterns": [
+        {
+          "name": "variable.other.assignment.cs2cfg",
+          "match": "^(\\s*)([A-Za-z0-9_\\.]+)(?=\\s)"
+        }
+      ]
+    }
+  }
+}

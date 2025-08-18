@@ -1,0 +1,110 @@
+{
+  "name": "cs-commands-intellisense",
+  "displayName": "CS Commands Intellisense",
+  "description": "IntelliSense, Hover, Diagnostics und Highlighting für CS2 Configs basierend auf einer Commands-JSON.",
+  "version": "1.1.0",
+  "publisher": "Lenam0n",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:cs2cfg",
+    "onCommand:csCommands.reloadDatabase",
+    "onCommand:csCommands.generateAutoexec",
+    "onCommand:csCommands.generateCrosshairCfg",
+    "workspaceContains:**/*.cfg"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "cs2cfg",
+        "aliases": [
+          "CS2 CFG",
+          "cs2cfg"
+        ],
+        "extensions": [
+          ".cfg",
+          ".cfg.txt",
+          ".autoexec",
+          ".vcfg"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "cs2cfg",
+        "scopeName": "source.cs2cfg",
+        "path": "./syntaxes/cs2cfg.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "csCommands.reloadDatabase",
+        "title": "CS Commands: Daten neu laden"
+      },
+      {
+        "command": "csCommands.generateAutoexec",
+        "title": "CS Commands: Generate autoexec.cfg"
+      },
+      {
+        "command": "csCommands.generateCrosshairCfg",
+        "title": "CS Commands: Generate crosshair.cfg"
+      }
+    ],
+    "configuration": {
+      "title": "CS Commands",
+      "properties": {
+        "csCommands.dataPath": {
+          "type": "string",
+          "default": "",
+          "description": "Pfad zu deiner CommandList-JSON im Workspace. Leer lassen, um die eingebaute Beispiel-DB zu nutzen.",
+          "markdownDescription": "Pfad (relativ zur Workspace-Root) zu deiner **CommandList** JSON. Beispiel: `data/commands.json`."
+        },
+        "csCommands.enableDiagnostics": {
+          "type": "string",
+          "enum": [
+            "off",
+            "warning",
+            "error"
+          ],
+          "default": "warning",
+          "description": "Markiere unbekannte Commands als Warnung/Fehler oder deaktiviere die Diagnostics."
+        },
+        "csCommands.languages": {
+          "type": "array",
+          "description": "Sprach-IDs, in denen IntelliSense/Diagnostics aktiv ist.",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "cs2cfg"
+          ]
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "npm run compile",
+    "vscode:prepublish": "npm run build",
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "test": "jest --runInBand",
+    "package:vsix": "node -e \"require('fs').mkdirSync('dist',{recursive:true})\" && npx vsce package -o dist/extension.vsix",
+    "publish:marketplace": "npx vsce publish"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.14.10",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.5.4",
+    "vsce": "^3.0.0",
+    "vscode": "^1.1.37"
+  }
+}

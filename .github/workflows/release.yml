@@ -1,0 +1,119 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "Release channel (prod/dev)"
+        type: choice
+        required: true
+        default: dev
+        options:
+          - dev
+          - prod
+      notes:
+        description: "Optional release notes"
+        type: string
+        required: false
+  push:
+    branches:
+      - dev
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # create release & upload asset
+      id-token: write # (optional) for future use
+    env:
+      # Entscheiden des Channels: workflow input > tag/branch Heuristik
+      INPUT_CHANNEL: ${{ github.event.inputs.channel }}
+    steps:
+      - name: Derive channel fallback
+        id: ch
+        run: |
+          # Fallback: wenn kein workflow_dispatch, aus Ref ableiten
+          # Tags 'v*' => prod, Branch 'dev' => dev
+          if [ -z "${INPUT_CHANNEL}" ]; then
+            REF="${GITHUB_REF##*/}"
+            if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+              echo "channel=prod" >> $GITHUB_OUTPUT
+            elif [[ "$GITHUB_REF" == refs/heads/dev ]]; then
+              echo "channel=dev" >> $GITHUB_OUTPUT
+            else
+              echo "channel=dev" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "channel=${INPUT_CHANNEL}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test -- --coverage
+
+      - name: Determine version & artifact names
+        id: meta
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          NAME=$(node -p "require('./package.json').name")
+          CH="${{ steps.ch.outputs.channel }}"
+          if [ "$CH" = "prod" ]; then
+            TAG="v${VERSION}"
+            FILE="${NAME}-${VERSION}.vsix"
+            PRERELEASE="false"
+          else
+            TAG="v${VERSION}-dev.${GITHUB.run_number}"
+            FILE="${NAME}-${VERSION}-dev.${GITHUB.run_number}.vsix"
+            PRERELEASE="true"
+          fi
+          mkdir -p dist
+          echo "VERSION=$VERSION"   >> $GITHUB_OUTPUT
+          echo "NAME=$NAME"         >> $GITHUB_OUTPUT
+          echo "TAG=$TAG"           >> $GITHUB_OUTPUT
+          echo "FILE=$FILE"         >> $GITHUB_OUTPUT
+          echo "PRERELEASE=$PRERELEASE" >> $GITHUB_OUTPUT
+
+      - name: Package VSIX
+        run: npx vsce package -o "dist/${{ steps.meta.outputs.FILE }}"
+
+      - name: Upload VSIX artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.meta.outputs.FILE }}
+          path: dist/${{ steps.meta.outputs.FILE }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.meta.outputs.TAG }}
+          name: ${{ steps.meta.outputs.TAG }}
+          body: ${{ github.event.inputs.notes || 'Automated release' }}
+          prerelease: ${{ steps.meta.outputs.PRERELEASE }}
+          files: dist/${{ steps.meta.outputs.FILE }}
+
+      - name: Publish to VS Code Marketplace (prod only)
+        if: steps.ch.outputs.channel == 'prod'
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        run: |
+          if [ -z "$VSCE_PAT" ]; then
+            echo "Missing VSCE_PAT secret" >&2
+            exit 1
+          fi
+          npx vsce publish -p "$VSCE_PAT"

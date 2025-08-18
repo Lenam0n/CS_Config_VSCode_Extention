@@ -1,0 +1,328 @@
+{
+  "meta": {
+    "name": "CS2 AUTOEXEC",
+    "intro": [
+      "This template is intentionally minimal: no 'exec ... .cfg', no 'script' blocks.",
+      "Adjust values to your needs. All important areas are grouped below."
+    ],
+    "notes": [
+      "Place any custom exec-chains in your own files; this template avoids 'exec' by design.",
+      "Keep sections tidy. Use this as your clean baseline."
+    ],
+    "sectionsOrder": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06A",
+      "06B",
+      "06C",
+      "06D",
+      "06E",
+      "06F",
+      "06G",
+      "07",
+      "08",
+      "09"
+    ],
+    "sectionsToc": {
+      "01": "Core Settings",
+      "02": "HUD & Viewmodel",
+      "03": "Audio",
+      "04": "Radar",
+      "05": "Mouse & Sensitivity",
+      "06A": "Binds — Keyboard (Alphanumeric)",
+      "06B": "Binds — Keyboard (Function Keys)",
+      "06C": "Binds — Keyboard (Navigation & Editing)",
+      "06D": "Binds — Keyboard (Arrow Keys)",
+      "06E": "Binds — Keyboard (Punctuation / OEM)",
+      "06F": "Binds — Keyboard (Numpad)",
+      "06G": "Binds — Keyboard (Modifiers & System)",
+      "07": "Binds — Mouse (Buttons & Wheel)",
+      "08": "Grenade Binds (optional)",
+      "09": "Misc"
+    }
+  },
+  "sections": {
+    "01": {
+      "title": "[01] Core Settings",
+      "lines": [
+        "con_enable \"1\"",
+        "fps_max \"0\"                // 0 = uncap, else a hard cap",
+        "mm_dedicated_search_maxping \"60\"    // max acceptable matchmaking ping",
+        "cl_showloadout \"1\"",
+        "cl_teamid_overhead_mode \"2\" // clearer teammate pips/names",
+        "",
+        "echo \"[autoexec] Core Settings loaded\""
+      ]
+    },
+    "02": {
+      "title": "[02] HUD & Viewmodel",
+      "lines": [
+        "// Viewmodel (adjust to your preference)",
+        "viewmodel_fov \"68\"",
+        "viewmodel_offset_x \"2.5\"",
+        "viewmodel_offset_y \"0\"",
+        "viewmodel_offset_z \"-1.5\"",
+        "",
+        "// HUD (radar is in its own section below)",
+        "hud_scaling \"0.95\"",
+        "",
+        "echo \"[autoexec] HUD & Viewmodel loaded\""
+      ]
+    },
+    "03": {
+      "title": "[03] Audio",
+      "lines": [
+        "volume \"0.7\"",
+        "voice_enable \"1\"",
+        "voice_scale \"0.6\"",
+        "",
+        "echo \"[autoexec] Audio loaded\""
+      ]
+    },
+    "04": {
+      "title": "[04] Radar",
+      "lines": [
+        "cl_radar_always_centered \"0\"",
+        "cl_radar_scale \"0.9\"",
+        "cl_radar_icon_scale_min \"0.8\"",
+        "",
+        "echo \"[autoexec] Radar loaded\""
+      ]
+    },
+    "05": {
+      "title": "[05] Mouse & Sensitivity",
+      "lines": [
+        "m_rawinput \"1\"",
+        "m_customaccel \"0\"",
+        "sensitivity \"1.50\"",
+        "zoom_sensitivity_ratio \"1.0\"",
+        "",
+        "echo \"[autoexec] Mouse & Sens loaded\""
+      ]
+    },
+
+    "// --- KEYBOARD BINDS ----------------------------------------------------": {
+      "title": "",
+      "lines": []
+    },
+
+    "06A": {
+      "title": "[06A] Binds — Keyboard (Alphanumeric)",
+      "lines": [
+        "// Letters A–Z",
+        "bind \"a\" \"\"",
+        "bind \"b\" \"\"",
+        "bind \"c\" \"\"",
+        "bind \"d\" \"\"",
+        "bind \"e\" \"\"",
+        "bind \"f\" \"\"",
+        "bind \"g\" \"\"",
+        "bind \"h\" \"\"",
+        "bind \"i\" \"\"",
+        "bind \"j\" \"\"",
+        "bind \"k\" \"\"",
+        "bind \"l\" \"\"",
+        "bind \"m\" \"\"",
+        "bind \"n\" \"\"",
+        "bind \"o\" \"\"",
+        "bind \"p\" \"\"",
+        "bind \"q\" \"\"",
+        "bind \"r\" \"\"",
+        "bind \"s\" \"\"",
+        "bind \"t\" \"\"",
+        "bind \"u\" \"\"",
+        "bind \"v\" \"\"",
+        "bind \"w\" \"\"",
+        "bind \"x\" \"\"",
+        "bind \"y\" \"\"",
+        "bind \"z\" \"\"",
+        "",
+        "// Number row 0–9",
+        "bind \"0\" \"\"",
+        "bind \"1\" \"\"",
+        "bind \"2\" \"\"",
+        "bind \"3\" \"\"",
+        "bind \"4\" \"\"",
+        "bind \"5\" \"\"",
+        "bind \"6\" \"\"",
+        "bind \"7\" \"\"",
+        "bind \"8\" \"\"",
+        "bind \"9\" \"\"",
+        "",
+        "echo \"[autoexec] Keyboard (Alphanumeric) ready\""
+      ]
+    },
+
+    "06B": {
+      "title": "[06B] Binds — Keyboard (Function Keys)",
+      "lines": [
+        "bind \"f1\" \"\"",
+        "bind \"f2\" \"\"",
+        "bind \"f3\" \"\"",
+        "bind \"f4\" \"\"",
+        "bind \"f5\" \"\"",
+        "bind \"f6\" \"\"",
+        "bind \"f7\" \"\"",
+        "bind \"f8\" \"\"",
+        "bind \"f9\" \"\"",
+        "bind \"f10\" \"\"",
+        "bind \"f11\" \"\"",
+        "bind \"f12\" \"\"",
+        "// bind \"f13\" \"\"  // uncommon",
+        "// bind \"f14\" \"\"",
+        "// bind \"f15\" \"\"",
+        "// bind \"f16\" \"\"",
+        "// bind \"f17\" \"\"",
+        "// bind \"f18\" \"\"",
+        "// bind \"f19\" \"\"",
+        "// bind \"f20\" \"\"",
+        "// bind \"f21\" \"\"",
+        "// bind \"f22\" \"\"",
+        "// bind \"f23\" \"\"",
+        "// bind \"f24\" \"\"",
+        "",
+        "echo \"[autoexec] Keyboard (Function) ready\""
+      ]
+    },
+
+    "06C": {
+      "title": "[06C] Binds — Keyboard (Navigation & Editing)",
+      "lines": [
+        "bind \"tab\" \"\"",
+        "bind \"capslock\" \"\"",
+        "bind \"scrolllock\" \"\"",
+        "bind \"numlock\" \"\"",
+        "bind \"backspace\" \"\"",
+        "bind \"enter\" \"\"",
+        "bind \"escape\" \"\"  // aka 'esc'",
+        "bind \"ins\" \"\"",
+        "bind \"del\" \"\"",
+        "bind \"home\" \"\"",
+        "bind \"end\" \"\"",
+        "bind \"pgup\" \"\"",
+        "bind \"pgdn\" \"\"",
+        "bind \"printscreen\" \"\"",
+        "bind \"pause\" \"\"",
+        "",
+        "echo \"[autoexec] Keyboard (Navigation & Editing) ready\""
+      ]
+    },
+
+    "06D": {
+      "title": "[06D] Binds — Keyboard (Arrow Keys)",
+      "lines": [
+        "bind \"up\" \"\"",
+        "bind \"down\" \"\"",
+        "bind \"left\" \"\"",
+        "bind \"right\" \"\"",
+        "",
+        "echo \"[autoexec] Keyboard (Arrows) ready\""
+      ]
+    },
+
+    "06E": {
+      "title": "[06E] Binds — Keyboard (Punctuation / OEM)",
+      "lines": [
+        "bind \"grave\" \"\"        // `~",
+        "bind \"minus\" \"\"        // -_",
+        "bind \"equals\" \"\"       // =+",
+        "bind \"leftbracket\" \"\"  // [{",
+        "bind \"rightbracket\" \"\" // ]}",
+        "bind \"semicolon\" \"\"     // ;:",
+        "bind \"apostrophe\" \"\"    // '\"",
+        "bind \"comma\" \"\"         // ,<",
+        "bind \"period\" \"\"        // .>",
+        "bind \"slash\" \"\"         // /?",
+        "bind \"backslash\" \"\"     // \\|",
+        "",
+        "echo \"[autoexec] Keyboard (Punctuation/OEM) ready\""
+      ]
+    },
+
+    "06F": {
+      "title": "[06F] Binds — Keyboard (Numpad)",
+      "lines": [
+        "bind \"kp_ins\" \"\"        // 0",
+        "bind \"kp_end\" \"\"        // 1",
+        "bind \"kp_downarrow\" \"\"  // 2",
+        "bind \"kp_pgdn\" \"\"       // 3",
+        "bind \"kp_leftarrow\" \"\"  // 4",
+        "bind \"kp_5\" \"\"          // 5",
+        "bind \"kp_rightarrow\" \"\" // 6",
+        "bind \"kp_home\" \"\"       // 7",
+        "bind \"kp_uparrow\" \"\"    // 8",
+        "bind \"kp_pgup\" \"\"       // 9",
+        "bind \"kp_del\" \"\"        // . (decimal)",
+        "bind \"kp_enter\" \"\"",
+        "bind \"kp_plus\" \"\"",
+        "bind \"kp_minus\" \"\"",
+        "bind \"kp_multiply\" \"\"",
+        "bind \"kp_slash\" \"\"",
+        "",
+        "echo \"[autoexec] Keyboard (Numpad) ready\""
+      ]
+    },
+
+    "06G": {
+      "title": "[06G] Binds — Keyboard (Modifiers & System)",
+      "lines": [
+        "bind \"space\" \"\"",
+        "bind \"shift\" \"\"",
+        "bind \"ctrl\" \"\"",
+        "bind \"alt\" \"\"",
+        "bind \"rshift\" \"\"",
+        "bind \"rctrl\" \"\"",
+        "bind \"ralt\" \"\"",
+        "// bind \"lwin\" \"\"   // Windows key (often reserved / not bindable)",
+        "// bind \"rwin\" \"\"   // Windows key (often reserved / not bindable)",
+        "",
+        "echo \"[autoexec] Keyboard (Modifiers & System) ready\""
+      ]
+    },
+
+    "07": {
+      "title": "[07] Binds — Mouse (Buttons & Wheel)",
+      "lines": [
+        "bind \"mouse1\" \"\"",
+        "bind \"mouse2\" \"\"",
+        "bind \"mouse3\" \"\"",
+        "bind \"mouse4\" \"\"",
+        "bind \"mouse5\" \"\"",
+        "bind \"mwheelup\" \"\"",
+        "bind \"mwheeldown\" \"\"",
+        "// bind \"mwheelleft\" \"\"   // if supported by driver",
+        "// bind \"mwheelright\" \"\"  // if supported by driver",
+        "",
+        "echo \"[autoexec] Mouse binds ready\""
+      ]
+    },
+
+    "08": {
+      "title": "[08] Grenade Binds (optional)",
+      "lines": [
+        "// Example quick-throw aliases (edit to taste)",
+        "// alias \"+jumpthrow\" \"+jump; -attack; -attack2\"",
+        "// alias \"-jumpthrow\" \"-jump\"",
+        "// bind \"alt\" \"+jumpthrow\"",
+        "",
+        "echo \"[autoexec] Grenade bind section ready\""
+      ]
+    },
+
+    "09": {
+      "title": "[09] Misc",
+      "lines": [
+        "cl_use_opens_buy_menu \"0\"  // prefer E to use, not to open the buy menu",
+        "cl_showfps \"0\"",
+        "// Add any small QoL toggles here.",
+        "",
+        "echo \"===============================\"",
+        "echo \" autoexec.cfg successfully loaded \"",
+        "echo \"===============================\""
+      ]
+    }
+  }
+}
