@@ -1,0 +1,34 @@
+{
+  "general": {
+    "welcome": "CS Commands extension is ready."
+  },
+  "i18n": {
+    "languageSwitched": "Language switched to {{lang}}"
+  },
+  "commands": {
+    "reloadDatabase": {
+      "success": "CS Commands: data reloaded.",
+      "error": "CS Commands: failed to load data: {{error}}"
+    },
+    "launch": {
+      "built": "Launch options built.",
+      "copied": "Launch options copied to clipboard.",
+      "inserted": "Inserted launch options into editor."
+    },
+    "crosshair": {
+      "inserted": "Inserted crosshair from share code.",
+      "fallbackInserted": "Inserted fallback (apply_crosshair_code).",
+      "fileCreated": "Created crosshair.cfg from share code.",
+      "fileCreatedFallback": "Created crosshair.cfg (fallback)."
+    }
+  },
+  "visualizer": {
+    "quickPick": {
+      "title": "Choose a visualization",
+      "heatmap": "Key Heatmap",
+      "radar": "Radar Preview",
+      "hud": "HUD Preview",
+      "crosshair": "Crosshair Preview"
+    }
+  }
+}

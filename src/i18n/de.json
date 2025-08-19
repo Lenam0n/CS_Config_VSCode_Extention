@@ -1,0 +1,34 @@
+{
+  "general": {
+    "welcome": "CS Commands Erweiterung ist bereit."
+  },
+  "i18n": {
+    "languageSwitched": "Sprache gewechselt zu {{lang}}"
+  },
+  "commands": {
+    "reloadDatabase": {
+      "success": "CS Commands: Daten neu geladen.",
+      "error": "CS Commands: Konnte Daten nicht laden: {{error}}"
+    },
+    "launch": {
+      "built": "Launch-Optionen generiert.",
+      "copied": "Launch-Optionen in die Zwischenablage kopiert.",
+      "inserted": "Launch-Optionen in den Editor eingefügt."
+    },
+    "crosshair": {
+      "inserted": "Crosshair aus Share-Code eingefügt.",
+      "fallbackInserted": "Fallback (apply_crosshair_code) eingefügt.",
+      "fileCreated": "crosshair.cfg aus Share-Code erstellt.",
+      "fileCreatedFallback": "crosshair.cfg (Fallback) erstellt."
+    }
+  },
+  "visualizer": {
+    "quickPick": {
+      "title": "Wähle eine Visualisierung",
+      "heatmap": "Key Heatmap",
+      "radar": "Radar-Vorschau",
+      "hud": "HUD-Vorschau",
+      "crosshair": "Crosshair-Vorschau"
+    }
+  }
+}

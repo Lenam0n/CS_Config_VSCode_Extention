@@ -23,7 +23,7 @@
   - [Alias-Auflösung \& Hover](#alias-auflösung--hover)
   - [Diagnostik \& Linting](#diagnostik--linting)
     - [Diagnostics-Schweregrad](#diagnostics-schweregrad)
-    - [Lint-Regeln (per Rule konfigurierbar, z. B. Severity „off“)](#lint-regeln-per-rule-konfigurierbar-z-b-severity-off)
+    - [Lint-Regeln](#lint-regeln)
   - [Snippets \& Multi-Cursor-Helper](#snippets--multi-cursor-helper)
   - [Dateiendungen \& Sprache](#dateiendungen--sprache)
   - [Eigene Command-Daten (JSON)](#eigene-command-daten-json)
@@ -207,7 +207,9 @@ Alle Settings sind unter dem Namespace `csCommands.*`.
 
 `csCommands.features.diagnostics = "off" | "warning" | "error"`
 
-### Lint-Regeln (per Rule konfigurierbar, z. B. Severity „off“)
+### Lint-Regeln
+
+> per Rule konfigurierbar, z. B. Severity „off“
 
 - `exec-script-forbidden` (markiert `exec … .cfg` / `script`)
 - `duplicate-bind-key` (gleiches Key mehrfach)

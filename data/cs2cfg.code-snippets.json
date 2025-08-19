@@ -1,0 +1,30 @@
+{
+  "bind: basic": {
+    "prefix": "bind",
+    "body": ["bind \"$1\" \"$2\""],
+    "description": "bind a key to a command (quoted key & value)"
+  },
+  "alias: basic": {
+    "prefix": "alias",
+    "body": ["alias $1 $2"],
+    "description": "create an alias"
+  },
+  "section: header": {
+    "prefix": "sec",
+    "body": [
+      "// [${1:NN}] ${2:Section Title}",
+      "// ----------------------------------------------------------------------------",
+      "$0"
+    ],
+    "description": "section heading with rule"
+  },
+  "echo: banner": {
+    "prefix": "echoBox",
+    "body": [
+      "echo \"===============================\"",
+      "echo \" ${1:Message} \"",
+      "echo \"===============================\""
+    ],
+    "description": "3-line echo banner"
+  }
+}

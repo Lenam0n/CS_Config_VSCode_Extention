@@ -16,16 +16,25 @@
       "@type/*": ["src/types/*"],
       "@feature/*": ["src/features/*"],
       "@command/*": ["src/commands/*"],
+      "@lint/*": ["src/lint/*"],
       "@templates/*": ["src/templates/*"],
+      "@webview/*": ["src/webview/*"],
+      "@config/*": ["src/config/*"],
+      "@i18n/*": ["src/i18n/*"],
       "@util/*": ["src/utils/*"],
       "@data/*": ["data/*"],
+      "@media/*": ["media/*"],
 
       "~/*": ["src/__tests__/*"],
       "~feature/*": ["src/features/__tests__/*"],
       "~command/*": ["src/commands/__tests__/*"],
       "~util/*": ["src/utils/__tests__/*"],
+      "~webview/*": ["src/webview/__tests__/*"],
+      "~lint/*": ["src/lint/__tests__/*"],
+      "~i18n/*": ["src/i18n/__tests__/*"],
       "~helper/*": ["src/__tests__/helpers/*"]
-    }
+    },
+    "types": ["node", "vscode", "jest"]
   },
   "include": ["src/**/*"]
 }

@@ -5,63 +5,73 @@ const config: Config = {
   preset: "ts-jest",
   testEnvironment: "node",
 
-  // Suche Tests primär unterhalb von src/
+  // Tests leben in src/
   roots: ["<rootDir>/src"],
 
-  // Erlaubte Dateiendungen
-  moduleFileExtensions: ["ts", "tsx", "js", "json"],
+  moduleFileExtensions: ["ts", "tsx", "js", "json", "node"],
 
-  // Match-Patterns für Tests (beides erlaubt: __tests__ Ordner & *.test|spec.ts)
+  // __tests__-Ordner + *.test|spec.ts
   testMatch: [
     "<rootDir>/src/**/__tests__/**/*.(test|spec).ts",
     "<rootDir>/src/**/*.(test|spec).ts",
   ],
 
-  // Aliase 1:1 gemäß deiner tsconfig.json (Quelle + Tests)
+  // 1:1-Aliase gemäß deiner tsconfig.json
   moduleNameMapper: {
     // --- Source-Aliase (@)
     "^@/(.*)$": "<rootDir>/src/$1",
     "^@type/(.*)$": "<rootDir>/src/types/$1",
     "^@feature/(.*)$": "<rootDir>/src/features/$1",
-    "^@command/(.*)$": "<rootDir>/src/features/commands/$1",
+    "^@command/(.*)$": "<rootDir>/src/commands/$1",
+    "^@lint/(.*)$": "<rootDir>/src/lint/$1",
+    "^@templates/(.*)$": "<rootDir>/src/templates/$1",
+    "^@webview/(.*)$": "<rootDir>/src/webview/$1",
+    "^@config/(.*)$": "<rootDir>/src/config/$1",
+    "^@i18n/(.*)$": "<rootDir>/src/i18n/$1",
     "^@util/(.*)$": "<rootDir>/src/utils/$1",
     "^@data/(.*)$": "<rootDir>/data/$1",
+    "^@media/(.*)$": "<rootDir>/media/$1",
 
     // --- Test-Aliase (~)
     "^~/(.*)$": "<rootDir>/src/__tests__/$1",
     "^~feature/(.*)$": "<rootDir>/src/features/__tests__/$1",
-    "^~command/(.*)$": "<rootDir>/src/features/commands/__tests__/$1",
+    "^~command/(.*)$": "<rootDir>/src/commands/__tests__/$1",
     "^~util/(.*)$": "<rootDir>/src/utils/__tests__/$1",
+    "^~webview/(.*)$": "<rootDir>/src/webview/__tests__/$1",
+    "^~lint/(.*)$": "<rootDir>/src/lint/__tests__/$1",
+    "^~i18n/(.*)$": "<rootDir>/src/i18n/__tests__/$1",
     "^~helper/(.*)$": "<rootDir>/src/__tests__/helpers/$1",
 
-    // VS Code API auf Test-Mock umbiegen
-    "^vscode$": "<rootDir>/src/__tests__/__mocks__/vscode.ts",
+    // VS Code API → Test-Mock
+    "^vscode$": "<rootDir>/src/__tests__/helpers/vscode.test.ts",
   },
 
-  // ts-jest kümmert sich um TS-Transformation
   transform: {
     "^.+\\.(ts|tsx)$": "ts-jest",
   },
 
-  // Optionales Setup (z. B. globale Mocks, Reset zwischen Tests, usw.)
+  // ts-jest Konfiguration (nutzt dein tsconfig.json)
+  globals: {
+    "ts-jest": {
+      tsconfig: "<rootDir>/tsconfig.json",
+      isolatedModules: true,
+    },
+  },
+
   setupFilesAfterEnv: ["<rootDir>/src/__tests__/setupTests.ts"],
 
-  // Coverage-Einstellungen
   collectCoverageFrom: [
     "src/**/*.ts",
     "!src/**/*.d.ts",
     "!src/**/__tests__/**",
     "!src/**/__mocks__/**",
-    "!src/types/types.ts",
   ],
   coverageReporters: ["text", "lcov", "html"],
 
-  // Qualität/Ergonomie
   clearMocks: true,
   verbose: true,
 
-  // Verhindert false positives aus Build-Ordnern
-  testPathIgnorePatterns: ["/node_modules/", "/out/", "/dist/"],
+  testPathIgnorePatterns: ["/node_modules/", "/out/", "/dist/", "/coverage/"],
 };
 
 export default config;

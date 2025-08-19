@@ -1,0 +1,327 @@
+{
+  "meta": {
+    "game": "Counter-Strike 2",
+    "version": "2025-08-18",
+    "warning": "Kuratiert; Engine-Updates können Verhalten ändern. Prüfe Release Notes & Valve-Dev-Wiki."
+  },
+  "categories": [
+    { "id": "video", "title": "Video & Windowing" },
+    { "id": "system", "title": "System/CPU" },
+    { "id": "input", "title": "Input/Devices" },
+    { "id": "console", "title": "Console/Debug" },
+    { "id": "security", "title": "Security/Trusted Mode" },
+    { "id": "network", "title": "Network/Server" },
+    { "id": "plus", "title": "+Commands (CVars at launch)" },
+    { "id": "misc", "title": "Misc/Language" }
+  ],
+  "options": [
+    {
+      "id": "novid",
+      "kind": "flag",
+      "name": "-novid",
+      "category": "video",
+      "description": "Introvideo überspringen.",
+      "status": "supported",
+      "docs": [
+        "https://developer.valvesoftware.com/wiki/Command_line_options_%28Source_2%29"
+      ],
+      "notes": []
+    },
+    {
+      "id": "fullscreen",
+      "kind": "flag",
+      "name": "-fullscreen",
+      "aliases": ["-full"],
+      "category": "video",
+      "description": "Startet im Vollbild.",
+      "status": "supported",
+      "docs": [
+        "https://dmarket.com/blog/launch-options-in-cs2/",
+        "https://blast.tv/article/best-steam-launch-options-for-cs2"
+      ]
+    },
+    {
+      "id": "windowed",
+      "kind": "flag",
+      "name": "-windowed",
+      "aliases": ["-window", "-startwindowed", "-sw"],
+      "category": "video",
+      "description": "Fenstermodus.",
+      "status": "supported",
+      "docs": ["https://blast.tv/article/best-steam-launch-options-for-cs2"]
+    },
+    {
+      "id": "noborder",
+      "kind": "flag",
+      "name": "-noborder",
+      "category": "video",
+      "description": "Fenster ohne Rahmen (Borderless).",
+      "status": "supported",
+      "docs": ["https://blast.tv/article/best-steam-launch-options-for-cs2"]
+    },
+    {
+      "id": "width",
+      "kind": "flagWithValue",
+      "name": "-w",
+      "category": "video",
+      "description": "Fenster-/Bildschirmbreite.",
+      "status": "supported",
+      "params": [
+        {
+          "name": "width",
+          "type": "integer",
+          "min": 320,
+          "max": 16384,
+          "placeholder": "1920"
+        }
+      ],
+      "docs": [
+        "https://blast.tv/article/best-steam-launch-options-for-cs2",
+        "https://dmarket.com/blog/launch-options-in-cs2/"
+      ]
+    },
+    {
+      "id": "height",
+      "kind": "flagWithValue",
+      "name": "-h",
+      "category": "video",
+      "description": "Fenster-/Bildschirmhöhe.",
+      "status": "supported",
+      "params": [
+        {
+          "name": "height",
+          "type": "integer",
+          "min": 200,
+          "max": 16384,
+          "placeholder": "1080"
+        }
+      ],
+      "docs": [
+        "https://blast.tv/article/best-steam-launch-options-for-cs2",
+        "https://dmarket.com/blog/launch-options-in-cs2/"
+      ]
+    },
+    {
+      "id": "posx",
+      "kind": "flagWithValue",
+      "name": "-x",
+      "category": "video",
+      "description": "Fensterposition X (Pixel).",
+      "status": "supported",
+      "params": [
+        {
+          "name": "x",
+          "type": "integer",
+          "min": 0,
+          "max": 32767,
+          "placeholder": "0"
+        }
+      ],
+      "docs": ["https://dmarket.com/blog/launch-options-in-cs2/"]
+    },
+    {
+      "id": "posy",
+      "kind": "flagWithValue",
+      "name": "-y",
+      "category": "video",
+      "description": "Fensterposition Y (Pixel).",
+      "status": "supported",
+      "params": [
+        {
+          "name": "y",
+          "type": "integer",
+          "min": 0,
+          "max": 32767,
+          "placeholder": "0"
+        }
+      ],
+      "docs": ["https://dmarket.com/blog/launch-options-in-cs2/"]
+    },
+    {
+      "id": "refresh",
+      "kind": "flagWithValue",
+      "name": "-refresh",
+      "aliases": ["-freq"],
+      "category": "video",
+      "description": "Bildwiederholrate (Hz).",
+      "status": "legacy",
+      "params": [
+        {
+          "name": "hz",
+          "type": "integer",
+          "min": 30,
+          "max": 1000,
+          "placeholder": "144"
+        }
+      ],
+      "notes": [
+        "Moderne Treiber/OS erzwingen oft ihre eigene Rate; kann ignoriert werden."
+      ],
+      "docs": ["https://blast.tv/article/best-steam-launch-options-for-cs2"]
+    },
+    {
+      "id": "forcenovsync",
+      "kind": "flag",
+      "name": "-forcenovsync",
+      "category": "video",
+      "description": "Erzwingt VSync AUS.",
+      "status": "optional",
+      "docs": ["https://totalcsgo.com/launch-options"]
+    },
+    {
+      "id": "vulkan",
+      "kind": "flag",
+      "name": "-vulkan",
+      "category": "video",
+      "description": "Vulkan-Renderer erzwingen (CS2 nutzt Vulkan standardmäßig).",
+      "status": "optional",
+      "notes": ["Kann redundant sein; Renderer-Wahl ist plattformabhängig."],
+      "docs": [
+        "https://developer.valvesoftware.com/wiki/Command_line_options_%28Source_2%29"
+      ]
+    },
+    {
+      "id": "high",
+      "kind": "flag",
+      "name": "-high",
+      "category": "system",
+      "description": "Setzt Prozesspriorität auf hoch.",
+      "status": "optional",
+      "docs": ["https://refrag.gg/blog/best-launch-options-for-cs2/"]
+    },
+    {
+      "id": "threads",
+      "kind": "flagWithValue",
+      "name": "-threads",
+      "category": "system",
+      "description": "Thread-Anzahl vorgeben.",
+      "status": "legacy",
+      "params": [
+        {
+          "name": "count",
+          "type": "integer",
+          "min": 1,
+          "max": 128,
+          "placeholder": "auto"
+        }
+      ],
+      "notes": [
+        "Source 2 plant Threads selbst. Kann ignoriert werden / instabil sein."
+      ],
+      "docs": ["https://totalcsgo.com/launch-options"]
+    },
+    {
+      "id": "nojoy",
+      "kind": "flag",
+      "name": "-nojoy",
+      "category": "input",
+      "description": "Deaktiviert Joystick-Unterstützung.",
+      "status": "optional",
+      "docs": ["https://totalcsgo.com/launch-options"]
+    },
+    {
+      "id": "console",
+      "kind": "flag",
+      "name": "-console",
+      "category": "console",
+      "description": "öffnet die Entwicklerkonsole beim Start.",
+      "status": "supported",
+      "docs": ["https://totalcsgo.com/launch-options"]
+    },
+    {
+      "id": "autoconfig",
+      "kind": "flag",
+      "name": "-autoconfig",
+      "category": "console",
+      "description": "setzt Video/Performance-Settings auf defaults (ignoriere cfg).",
+      "status": "supported",
+      "docs": ["https://developer.valvesoftware.com/wiki/Command_line_options"]
+    },
+    {
+      "id": "allow_tps",
+      "kind": "flag",
+      "name": "-allow_third_party_software",
+      "category": "security",
+      "description": "Deaktiviert Trusted Mode, erlaubt Hooking (z. B. OBS).",
+      "status": "supported",
+      "notes": ["Kann Trust-Factor beeinflussen; kein VAC-Bypass."],
+      "docs": [
+        "https://help.steampowered.com/en/faqs/view/09A0-4879-4353-EF95",
+        "https://dotesports.com/counter-strike/news/how-to-allow-third-party-software-in-cs2"
+      ]
+    },
+    {
+      "id": "nohltv",
+      "kind": "flag",
+      "name": "-nohltv",
+      "category": "network",
+      "description": "Deaktiviert SourceTV/HLTV-Features.",
+      "status": "legacy",
+      "docs": ["https://totalcsgo.com/launch-options"]
+    },
+    {
+      "id": "language",
+      "kind": "flagWithValue",
+      "name": "-language",
+      "category": "misc",
+      "description": "Startsprache setzen (überschreibt Steam-Sprache).",
+      "status": "supported",
+      "params": [
+        { "name": "lang", "type": "string", "placeholder": "english" }
+      ],
+      "docs": ["https://dmarket.com/blog/launch-options-in-cs2/"]
+    },
+    {
+      "id": "plus_fps_max",
+      "kind": "plus",
+      "name": "+fps_max",
+      "category": "plus",
+      "description": "FPS-Limit (0 = unlimitiert).",
+      "status": "supported",
+      "params": [
+        {
+          "name": "value",
+          "type": "integer",
+          "min": 0,
+          "max": 10000,
+          "default": 0
+        }
+      ],
+      "docs": ["https://refrag.gg/blog/best-launch-options-for-cs2/"]
+    },
+    {
+      "id": "plus_cl_showfps",
+      "kind": "plus",
+      "name": "+cl_showfps",
+      "category": "plus",
+      "description": "FPS-Anzeige.",
+      "status": "supported",
+      "params": [
+        {
+          "name": "mode",
+          "type": "integer",
+          "enum": [0, 1, 2, 3, 4, 5],
+          "default": 1
+        }
+      ],
+      "docs": ["https://blast.tv/article/best-steam-launch-options-for-cs2"]
+    },
+    {
+      "id": "plus_exec",
+      "kind": "plus",
+      "name": "+exec",
+      "category": "plus",
+      "description": "cfg beim Start ausführen (z. B. autoexec.cfg).",
+      "status": "supported",
+      "params": [
+        {
+          "name": "file",
+          "type": "string",
+          "placeholder": "autoexec.cfg",
+          "default": "autoexec.cfg"
+        }
+      ],
+      "docs": ["https://dmarket.com/blog/launch-options-in-cs2/"]
+    }
+  ]
+}
